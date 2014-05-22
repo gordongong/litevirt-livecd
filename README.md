@@ -1,0 +1,2 @@
+litevirt-livecd
+===============
