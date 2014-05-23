@@ -1,7 +1,7 @@
 Name:           ConInit
 Version:        0.1
 Release:        1%{?dist}
-Source0:        %{name}-%{version}.tar
+Source0:        %{name}.tar
 Summary:        litevirt controller initialize tools
 Group:          Development/Tools
 License:        LGPLv2+
