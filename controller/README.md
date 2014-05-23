@@ -1,6 +1,6 @@
 build iso
 =========
-
+0. git clone litevirt-livecd
 1. cd controller  
 2. sh -x autobuild.sh   
 
