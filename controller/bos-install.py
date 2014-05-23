@@ -98,7 +98,7 @@ class BosInstaller(object):
                 sys.exit(-1)
 
         extlinux_conf = "%s/extlinux.conf" % self.bootdir
-		extlinux_template = "%s/template/extlinux.conf" % self.mntdir 
+        extlinux_template = "%s/template/extlinux.conf" % self.mntdir 
 
         runcmd('cat /usr/share/syslinux/mbr.bin > %s' % self.drive)
         blkid_cmd = "blkid -o value -s UUID %s" % self.rootdev
