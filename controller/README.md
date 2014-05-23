@@ -1,8 +1,8 @@
 build iso
 =========
-0. git clone litevirt-livecd
-1. cd controller  
-2. sh -x autobuild.sh   
+1. git clone litevirt-livecd
+2. cd controller  
+3. sh -x autobuild.sh   
 
 install iso
 ===========
