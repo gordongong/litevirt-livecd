@@ -57,5 +57,6 @@ openstack-heat-engine
 
 #init
 ConInit
+ntp
 
 %end
