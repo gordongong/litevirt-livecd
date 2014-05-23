@@ -55,4 +55,7 @@ openstack-heat-api
 openstack-heat-api-cfn
 openstack-heat-engine
 
+#init
+ConInit
+
 %end
