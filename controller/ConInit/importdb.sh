@@ -10,6 +10,7 @@ mysqladmin -u root password ${ROOT_PASSWORD}
 
 #create database
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE neutron;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE neutron_ml2;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE glance;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE heat;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE keystone;"
@@ -25,7 +26,7 @@ mysql -u root -p${ROOT_PASSWORD} heat      < ${STACK_TEMPLATE}/heat.sql
 sed  -i "s/${HOST_OLD_IP}/${HOST_NEW_IP}/g"  ${STACK_TEMPLATE}/keystone.sql
 mysql -u root -p${ROOT_PASSWORD} keystone  < ${STACK_TEMPLATE}/keystone.sql
 mysql -u root -p${ROOT_PASSWORD} neutron   < ${STACK_TEMPLATE}/neutron.sql
-mysql -u root -p${ROOT_PASSWORD} neutron-ml2   < ${STACK_TEMPLATE}/neutron-ml2.sql
+mysql -u root -p${ROOT_PASSWORD} neutron_ml2   < ${STACK_TEMPLATE}/neutron_ml2.sql
 mysql -u root -p${ROOT_PASSWORD} nova      < ${STACK_TEMPLATE}/nova.sql
 
 #remove_anonymous_users
