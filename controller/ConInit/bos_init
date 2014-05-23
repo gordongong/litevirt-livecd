@@ -1,1 +1,5 @@
-#
+#!/usr/bin/env bash
+cd /etc/template
+tar -xvf db.tar.gz
+tar -xvf etc.tar.gz -C /
+sh -x importdb.sh $1
