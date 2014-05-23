@@ -3,3 +3,4 @@ repo --name=centos6.5-update --baseurl=http://mirrors.163.com/centos/6.5/updates
 repo --name=epel --baseurl=http://ftp.sjtu.edu.cn/fedora/epel/6/x86_64/
 repo --name=rdo-icehouse --baseurl=http://repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6/
 #repo --name=local --baseurl=file:///root/repo/RPMS
+repo --name=local --baseurl=file:///root/rpm/RPMS/x86_64/
