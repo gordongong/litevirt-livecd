@@ -17,14 +17,14 @@ This tool allows user to initlize the openstack controller.
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/etc/template
-cp "export.sh" $RPM_BUILD_ROOT/etc/template/
-cp "import.sh" $RPM_BUILD_ROOT/etc/template/
+cp "exportdb.sh" $RPM_BUILD_ROOT/etc/template/
+cp "importdb.sh" $RPM_BUILD_ROOT/etc/template/
 cp "etc.tar.gz" $RPM_BUILD_ROOT/etc/template/
 cp "db.tar.gz" $RPM_BUILD_ROOT/etc/template/
 
 %files
-%attr(0644,root,root) /etc/template/export.sh
-%attr(0644,root,root) /etc/template/import.sh
+%attr(0644,root,root) /etc/template/exportdb.sh
+%attr(0644,root,root) /etc/template/importdb.sh
 %attr(0644,root,root) /etc/template/etc.tar.gz
 %attr(0644,root,root) /etc/template/db.tar.gz
 
