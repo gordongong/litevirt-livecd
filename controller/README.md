@@ -11,8 +11,5 @@ Controller node
 2. bos-install --drive install_device(such as "/dev/sda")
 
 ### Init the openstack controller
-1. cd /etc/template/
-2. tar -xvf etc.tar.gz -C /
-3. tar -xvf db.tar.gz
-4. sh importdb.sh
+1. bos_init <new_ip>
 
