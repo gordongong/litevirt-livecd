@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 STACK_TEMPLATE="/etc/template/db"
 ROOT_PASSWORD="admin"
-HOST_OLD_IP="186.100.30.214"
+HOST_OLD_IP="192.168.1.104"
 HOST_NEW_IP=$1
 
 service mysqld restart
@@ -27,7 +27,6 @@ cp ${STACK_TEMPLATE}/keystone.sql ${STACK_TEMPLATE}/keystone_work.sql
 sed  -i "s/${HOST_OLD_IP}/${HOST_NEW_IP}/g"  ${STACK_TEMPLATE}/keystone_work.sql
 mysql -u root -p${ROOT_PASSWORD} keystone  < ${STACK_TEMPLATE}/keystone_work.sql
 rm -f -r ${STACK_TEMPLATE}/keystone_work.sql
-mysql -u root -p${ROOT_PASSWORD} neutron   < ${STACK_TEMPLATE}/neutron.sql
 mysql -u root -p${ROOT_PASSWORD} neutron_ml2   < ${STACK_TEMPLATE}/neutron_ml2.sql
 mysql -u root -p${ROOT_PASSWORD} nova      < ${STACK_TEMPLATE}/nova.sql
 
