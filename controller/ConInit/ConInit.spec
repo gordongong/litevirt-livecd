@@ -17,6 +17,7 @@ This tool allows user to initlize the openstack controller.
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/etc/template
+mkdir -p $RPM_BUILD_ROOT/usr/bin
 cp "exportdb.sh" $RPM_BUILD_ROOT/etc/template/
 cp "importdb.sh" $RPM_BUILD_ROOT/etc/template/
 cp "etc.tar.gz" $RPM_BUILD_ROOT/etc/template/
