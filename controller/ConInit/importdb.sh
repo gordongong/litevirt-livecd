@@ -9,16 +9,16 @@ chkconfig mysqld on
 mysqladmin -u root password ${ROOT_PASSWORD}
 
 #clean database
-mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE neutron;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE neutron_ml2;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE glance;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE heat;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE keystone;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE cinder;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE nova;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE mysql;"
 
 #create database
-mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE neutron;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE mysql;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE neutron_ml2;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE glance;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE heat;"
