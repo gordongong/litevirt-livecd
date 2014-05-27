@@ -3,7 +3,7 @@
 
 lang en_US.UTF-8
 keyboard us
-timezone US/Eastern
+timezone Asia/Shanghai
 auth --useshadow --enablemd5
 selinux --disabled
 firewall --disabled
