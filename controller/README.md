@@ -11,5 +11,5 @@ Controller node
 2. bos-install --drive install_device(such as "/dev/sda")
 
 ### Init the openstack controller
-1. bos_init \<new_ip\>
+1. bos_init \<controller_ipaddr\> \<prefix\> \<gateway\>
 
