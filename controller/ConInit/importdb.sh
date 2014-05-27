@@ -8,6 +8,15 @@ service mysqld restart
 chkconfig mysqld on
 mysqladmin -u root password ${ROOT_PASSWORD}
 
+#clean database
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE neutron;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE neutron_ml2;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE glance;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE heat;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE keystone;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE cinder;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DROP DATABASE nova;"
+
 #create database
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE neutron;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "CREATE DATABASE neutron_ml2;"
@@ -29,6 +38,11 @@ mysql -u root -p${ROOT_PASSWORD} keystone  < ${STACK_TEMPLATE}/keystone_work.sql
 rm -f -r ${STACK_TEMPLATE}/keystone_work.sql
 mysql -u root -p${ROOT_PASSWORD} neutron_ml2   < ${STACK_TEMPLATE}/neutron_ml2.sql
 mysql -u root -p${ROOT_PASSWORD} nova      < ${STACK_TEMPLATE}/nova.sql
+
+#truncate tables
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE nova.services;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE cinder.services;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE neutron_ml2.agents;"
 
 #remove_anonymous_users
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DELETE FROM mysql.user WHERE User='';"
