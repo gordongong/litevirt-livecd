@@ -43,6 +43,8 @@ mysql -u root -p${ROOT_PASSWORD} nova      < ${STACK_TEMPLATE}/nova.sql
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE nova.services;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE cinder.services;"
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE neutron_ml2.agents;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE glance.images;"
+mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "TRUNCATE TABLE glance.image_locations;"
 
 #remove_anonymous_users
 mysql -uroot -p$ROOT_PASSWORD -h127.0.0.1 -e "DELETE FROM mysql.user WHERE User='';"
