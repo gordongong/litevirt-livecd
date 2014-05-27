@@ -37,7 +37,7 @@ python-keystone
 #neutron
 ethtool
 openstack-neutron
-#openstack-neutron-openvswitch
+openstack-neutron-openvswitch
 openstack-neutron-ml2
 python-neutronclient
 
