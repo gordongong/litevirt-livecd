@@ -3,3 +3,65 @@ cd /etc/template
 tar -xvf db.tar.gz
 tar -xvf etc.tar.gz -C /
 sh -x importdb.sh $1
+
+echo "$1 openstack-controller-ip">>/etc/hosts
+
+chkconfig mysqld on
+chkconfig rabbitmq-server on
+chkconfig neutron-server on
+chkconfig neutron-l3-agent on
+chkconfig neutron-dhcp-agent on
+chkconfig neutron-metadata-agent on
+chkconfig neutron-openvswitch-agent on
+chkconfig openstack-keystone on
+chkconfig openstack-glance-api on
+chkconfig openstack-glance-registry on
+chkconfig openstack-nova-api on
+chkconfig openstack-nova-cert on
+chkconfig openstack-nova-consoleauth on
+chkconfig openstack-nova-scheduler on
+chkconfig openstack-nova-conductor on
+chkconfig openstack-nova-novncproxy on
+chkconfig httpd on
+chkconfig memcached on
+chkconfig openstack-cinder-api on
+chkconfig openstack-cinder-scheduler on
+
+# config openvswitch
+modprobe openvswitch
+ovsdb-tool create /etc/openvswitch/conf.db /usr/share/openvswitch/vswitch.ovsschema
+rm -rf /var/run/openvswitch
+mkdir /var/run/openvswitch
+ovsdb-server --remote=punix:/var/run/openvswitch/db.sock --remote=db:Open_vSwitch,manager_options --pidfile --detach 
+ovs-vsctl --no-wait init
+ovs-vswitchd --pidfile --detach
+
+ovs-vsctl add-br br-int
+
+#config hostname
+cat > /etc/sysconfig/network <<EOF
+NETWORKING=yes
+NETWORKING_IPV6=no
+HOSTNAME=controller
+EOF
+
+#config management network
+cat > /etc/sysconfig/network <<EOF
+NETWORKING=yes
+NETWORKING_IPV6=no
+HOSTNAME=controller
+EOF
+
+cat > /etc/sysconfig/network-scripts/ifcfg-eth0 <<EOF
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+BOOTPROTO=none
+IPADDR=$1
+PREFIX=$2
+GATEWAY=$3
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME="System eth0"
+EOF
