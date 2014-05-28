@@ -12,4 +12,4 @@ Controller node
 
 ### Init the openstack controller
 1. bos_init \<controller_ipaddr\> \<prefix\> \<gateway\>
-
+2. reboot controller node
