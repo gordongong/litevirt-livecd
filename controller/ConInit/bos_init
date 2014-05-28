@@ -26,6 +26,7 @@ chkconfig httpd on
 chkconfig memcached on
 chkconfig openstack-cinder-api on
 chkconfig openstack-cinder-scheduler on
+chkconfig ntpd on
 
 # config openvswitch
 modprobe openvswitch
@@ -65,3 +66,5 @@ IPV4_FAILURE_FATAL=yes
 IPV6INIT=no
 NAME="System eth0"
 EOF
+
+echo "server 127.127.1.0" >> /etc/ntpd.conf
