@@ -4,3 +4,4 @@ repo --name=epel --baseurl=http://ftp.sjtu.edu.cn/fedora/epel/6/x86_64/
 repo --name=rdo-icehouse --baseurl=http://repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6/
 #repo --name=local --baseurl=file:///root/repo/RPMS
 repo --name=local --baseurl=file:///root/rpm/RPMS/x86_64/
+repo --name=rdo_customized --baseurl=http://openstack.wiaapp.com/openstack-ovirt-node-deps/
