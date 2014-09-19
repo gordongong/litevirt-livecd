@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if ! options=$(getopt -u -o k,o --long kimchi,openstack -- "$@")
+if ! options=$(getopt -u -o k,o,d --long kimchi,openstack,docker -- "$@")
 then
     # something went wrong, getopt will put out an error message for us
     echo "Usage: sh autobuild.sh --kimchi --openstack"
@@ -14,6 +14,7 @@ do
     case $1 in
     -k|--kimchi) kimchi="true"; shift;;
     -o|--openstack) openstack="true"; shift;;
+    -d|--docker)docker="true"; shift;;
     (--) shift; break;;
     (-*) echo "$0: error - unrecognized option $1" 1>&2; exit 1;;
     (*) break;;
@@ -51,6 +52,10 @@ git checkout openstack
 
 if [ x$kimchi != x ];then
   echo "%include kimchi/kimchi.ks" >> recipe/ovirt-node-image.ks.in
+fi
+
+if [ x$docker != x ];then
+  echo "%include docker/docker.ks" >> recipe/ovirt-node-image.ks.in
 fi
 
 if [ x$openstack != x ];then
